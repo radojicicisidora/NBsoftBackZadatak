@@ -1,0 +1,16 @@
+#a
+SELECT * FROM user WHERE dateCreate > DATE_SUB(CURDATE(), INTERVAL 2 DAY);
+#b
+SELECT user.firstname, user.lastname, racun.id, SUM(racun.value) sumValue FROM racun JOIN USER ON racun.userId = user.id GROUP BY racun.userId
+#c
+SELECT user.firstname, user.lastname, user.phone, user.email, COUNT(*) orderCount FROM racun JOIN USER ON racun.userId = user.id GROUP BY user.id HAVING orderCount > 2;
+#d
+SELECT user.firstname, user.lastname, COUNT(*) orderItemCount FROM orderItem JOIN racun ON orderItem.orderId = racun.id JOIN USER ON racun.userId = user.id GROUP BY orderId;
+#e
+SELECT user.firstname, user.lastname, COUNT(*) orderItemCount FROM orderItem JOIN racun ON orderItem.orderId = racun.id JOIN USER ON racun.userId = user.id GROUP BY orderId HAVING orderItemCount > 1;
+#f
+select user.firstname, user.lastname from user join order on user.id = order.userId join
+(select orderId, count(distinct(productId)) distinctProduct from orderItem group by orderId) as productCount
+on productCount.orderId = order.id having productCount.distincProduct > 3;
+
+#tabela racun je tabela order, jer order prepoznaje kao keyword, pa sam morala da preimenujem

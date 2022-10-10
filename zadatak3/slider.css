@@ -1,0 +1,47 @@
+.container {
+  padding: 2rem;
+}
+.slider-imagesNBsoft {
+  position: relative;
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+.slider {
+  display: flex;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  box-shadow: 0 24px 48px --12px hsla(0, 0%, 0%, 0.25);
+
+}
+
+.slider img {
+  flex: 1 0 100%;
+  scroll-snap-align: start;
+  object-fit: cover;
+}
+
+.slider-navigacija {
+  display: flex;
+  column-gap: 16px;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translate(-50%);
+  z-index: 1;
+}
+
+.slider-navigacija a {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: aliceblue;
+  opacity: 0.75;
+  transition: opacity ease 250ms;
+}
+.slider-navigacija a:hover {
+  opacity: 1;
+}
+
